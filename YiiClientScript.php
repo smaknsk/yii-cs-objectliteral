@@ -10,7 +10,7 @@ class YiiClientScript extends CClientScript
 	/**
 	 * Регистрирует инициализацию контролера
 	 * 
-	 * @param string $module
+	 * @param string || array $module
 	 * @param string $controller
 	 * @param string $action
 	 * @param integer $position the position of the JavaScript code. Valid values include the following:
@@ -23,10 +23,12 @@ class YiiClientScript extends CClientScript
 	 * </ul>
 	 * @return CClientScript the CClientScript object itself (to support method chaining, available since version 1.1.5).
 	 */
-	public function registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY)
+	public function registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY, $data = array())
 	{
 		if (!$module && Yii::app()->getController()->module) {
 			$module =  ucfirst(Yii::app()->getController()->module->id);
+		} else if (is_array($module)) {
+			$data = $module;
 		}
 		
 		if (!$controller) {
@@ -38,7 +40,7 @@ class YiiClientScript extends CClientScript
 		}
 
 		$scriptId = $module . $controller . '.' . $action . '.init';
-		$this->registerScript($scriptId, $scriptId . '();', $position);
+		$this->registerScript($scriptId, $scriptId . '(' . json_encode($data, JSON_FORCE_OBJECT) . ');', $position);
 	}
 	
 	/**
