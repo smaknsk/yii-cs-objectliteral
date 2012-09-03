@@ -5,8 +5,9 @@ Yii ClientScript
 
 ##Установка
 
-	git clone git://github.com/smaknsk/yii-clientscript.git extensions/yii-clientscript
+	git submodule add git://github.com/smaknsk/yii-clientscript.git extensions/yii-clientscript
 	
+Добавляем в конфиг
 ~~~php
 	'components' => array(
 		...
