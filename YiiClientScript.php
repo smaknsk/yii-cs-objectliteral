@@ -45,16 +45,16 @@ class YiiClientScript extends CClientScript
 	 * Отдаёт номер ревизии из файла application.runtime/build.php
 	 * @return string
 	 */
-	public function getRevision() {
-		
-		if ($this->revision) {
+	public function getRevision() 
+	{
+		if ($this->revision === null) {
 			return $this->revision;
 		}
 		
-		$this->revision = '?';
+		$this->revision = '';
 		$path = Yii::getPathOfAlias('application.runtime') . '/build.php';
 		if (file_exists($path)) {
-			$this->revision .= file_get_contents($path);
+			$this->revision = '?' . file_get_contents($path);
 		}
 		
 		return $this->revision;
