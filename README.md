@@ -3,9 +3,9 @@ Yii ClientScript
 
 Расширение класса CClientScript фреймворка Yii
 
-Установка
+##Установка
 
-	`git clone git://github.com/smaknsk/yii-clientscript.git extension/yii-clientscript`
+	git clone git://github.com/smaknsk/yii-clientscript.git extensions/yii-clientscript
 	
 ~~~php
 	'components' => array(
