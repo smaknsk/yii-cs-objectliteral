@@ -25,10 +25,13 @@ class YiiClientScript extends CClientScript
 	 */
 	public function registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY, $data = array())
 	{
-		if (!$module && Yii::app()->getController()->module) {
-			$module =  ucfirst(Yii::app()->getController()->module->id);
-		} else if (is_array($module)) {
+		if (is_array($module)) {
 			$data = $module;
+			$module = null;
+		}
+		
+		if ($module !== null && Yii::app()->getController()->module) {
+			$module =  ucfirst(Yii::app()->getController()->module->id);
 		}
 		
 		if (!$controller) {
@@ -40,7 +43,9 @@ class YiiClientScript extends CClientScript
 		}
 
 		$scriptId = $module . $controller . '.' . $action . '.init';
-		$this->registerScript($scriptId, $scriptId . '(' . json_encode($data, JSON_FORCE_OBJECT) . ');', $position);
+		$paramsJson = $data ? json_encode($data, JSON_FORCE_OBJECT) : '';
+		
+		$this->registerScript($scriptId, $scriptId . '(' . $paramsJson . ');', $position);
 	}
 	
 	/**
