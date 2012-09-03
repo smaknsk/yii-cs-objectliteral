@@ -23,9 +23,9 @@ class YiiClientScript extends CClientScript
 	 * </ul>
 	 * @return CClientScript the CClientScript object itself (to support method chaining, available since version 1.1.5).
 	 */
-	public function registerScriptInit($module = '', $controller = null, $action = null, $position=self::POS_READY)
+	public function registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY)
 	{
-		if (!$module && !is_null($module)) {
+		if (!$module && Yii::app()->getController()->module) {
 			$module =  ucfirst(Yii::app()->getController()->module->id);
 		}
 		
