@@ -30,7 +30,7 @@ class YiiClientScript extends CClientScript
 			$module = null;
 		}
 		
-		if ($module !== null && Yii::app()->getController()->module) {
+		if (!$module && Yii::app()->getController()->module) {
 			$module =  ucfirst(Yii::app()->getController()->module->id);
 		}
 		
