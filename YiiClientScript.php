@@ -54,12 +54,12 @@ class YiiClientScript extends CClientScript
 	 */
 	public function getRevision() 
 	{
-		if ($this->revision === null) {
+		if ($this->revision !== null) {
 			return $this->revision;
 		}
 		
 		$this->revision = '';
-		$path = Yii::getPathOfAlias('application.runtime') . '/build.php';
+		$path = Yii::getPathOfAlias('application.runtime') . '/clientscript.rev';
 		if (file_exists($path)) {
 			$this->revision = '?' . file_get_contents($path);
 		}
