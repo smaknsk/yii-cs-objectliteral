@@ -35,11 +35,11 @@ class YiiClientScript extends CClientScript
 		}
 		
 		if (!$controller) {
-			$controller = ucfirst(Yii::app()->getController()->id).'Controller';
+			$controller = ucfirst(Yii::app()->getController()->id) . 'Controller';
 		}
 		
 		if (!$action) {
-			$action = 'action'.ucfirst(Yii::app()->getController()->action->id);
+			$action = 'action' . ucfirst(Yii::app()->getController()->action->id);
 		}
 
 		$scriptId = $module . $controller . '.' . $action . '.init';
@@ -61,7 +61,7 @@ class YiiClientScript extends CClientScript
 		$this->revision = '';
 		$path = Yii::getPathOfAlias('application.runtime') . '/clientscript.rev';
 		if (file_exists($path)) {
-			$this->revision = '?' . file_get_contents($path);
+			$this->revision = '?' . trim(file_get_contents($path));
 		}
 		
 		return $this->revision;
