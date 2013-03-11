@@ -49,7 +49,7 @@ class YiiClientScript extends CClientScript
 	}
 	
 	/**
-	 * Отдаёт номер ревизии из файла application.runtime/build.php
+	 * Отдаёт номер ревизии из файла application.runtime/clientscript.rev
 	 * @return string
 	 */
 	public function getRevision() 
