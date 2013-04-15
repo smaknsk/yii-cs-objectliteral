@@ -1,6 +1,10 @@
 <?php
 
-class YiiClientScript extends CClientScript 
+/**
+ * Implement Object Literal pattern for Yii
+ * https://github.com/smaknsk/yii-cs-objectliteral
+ */
+class YiiCSObjectLiteral extends CClientScript 
 {
 	/**
 	 * @var string Номер ревизии
@@ -21,6 +25,7 @@ class YiiClientScript extends CClientScript
 	 * <li>CClientScript::POS_LOAD : the script is inserted in the window.onload() function.</li>
 	 * <li>CClientScript::POS_READY : the script is inserted in the jQuery's ready function.</li>
 	 * </ul>
+     * @param array $data
 	 * @return CClientScript the CClientScript object itself (to support method chaining, available since version 1.1.5).
 	 */
 	public function registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY, $data = array())

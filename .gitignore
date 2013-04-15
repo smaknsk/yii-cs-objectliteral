@@ -1,1 +1,6 @@
+# Netbeans
 /nbproject/
+
+# Cloud9 IDE
+.c9revisions
+.settings
