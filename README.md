@@ -13,8 +13,7 @@ Copy this component to extensions/yii-cs-objectliteral or add as submodule:
 git submodule add git://github.com/smaknsk/yii-cs-objectliteral.git extensions/yii-cs-objectliteral
 
 Add to protected/config/main.php
-~~~
-[php]
+~~~php
 	'components' => array(
 		...
 		'clientScript' => array(
@@ -30,8 +29,7 @@ API
 ### YiiCSObjectLiteral::registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY, $data = array())
 
 
-~~~
-[php]
+~~~php
 
 Yii::app()->clientScript->registerScriptInit();
 ~~~
@@ -39,8 +37,7 @@ Yii::app()->clientScript->registerScriptInit();
 ### YiiCSObjectLiteral::registerScriptData($name, $data)
 
 
-~~~
-[php]
+~~~php
 
 Yii::app()->clientScript->registerScriptData();
 ~~~
@@ -48,8 +45,7 @@ Yii::app()->clientScript->registerScriptData();
 ### YiiCSObjectLiteral::registerCssFile($url, $media='')
 
 
-~~~
-[php]
+~~~php
 
 Yii::app()->clientScript->registerCssFile();
 ~~~
@@ -57,8 +53,7 @@ Yii::app()->clientScript->registerCssFile();
 ### YiiCSObjectLiteral::registerScriptFile($url, $position = null, $isRevision = true)
 
 
-~~~
-[php]
+~~~php
 
 Yii::app()->clientScript->registerScriptFile();
 ~~~
@@ -66,8 +61,7 @@ Yii::app()->clientScript->registerScriptFile();
 ### YiiCSObjectLiteral::getRevision()
 
 
-~~~
-[php]
+~~~php
 
 Yii::app()->clientScript->getRevision();
 ~~~
