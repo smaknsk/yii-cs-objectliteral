@@ -36,7 +36,7 @@ class YiiCSObjectLiteral extends CClientScript
 		}
 		
 		if (!$module && Yii::app()->getController()->module) {
-			$module =  ucfirst(Yii::app()->getController()->module->id);
+			$module =  ucfirst(Yii::app()->getController()->module->id) . 'Module.';
 		}
 		
 		if (!$controller) {
