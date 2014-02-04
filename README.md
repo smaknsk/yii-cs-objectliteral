@@ -1,23 +1,23 @@
 Yii ClientScript Object Literal
 ================
 
-The implementation of the basic methods ObjectLiteral of pattern for framework Yii CClientScript
-Read more about this pattern: 
+The implementation of the basic methods ObjectLiteral for framework Yii CClientScript
+Read more about this: 
 * [Markup-based unobtrusive comprehensive DOM-ready execution](http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/)
 * [Show love to the object literal](http://christianheilmann.com/2006/02/16/show-love-to-the-object-literal/)
 * [Использование объектов для красивой структуры кода в JavaScript](http://habrahabr.ru/post/111290/)
 
 Installation
 ----------------
-Copy this component to extensions/yii-cs-objectliteral or add as submodule:
-git submodule add git://github.com/smaknsk/yii-cs-objectliteral.git extensions/yii-cs-objectliteral
+Copy this component to extensions/yii-csol or add as submodule:
+git submodule add git://github.com/smaknsk/yii-csol.git extensions/yii-csobl
 
 Add to protected/config/main.php
 ~~~php
 	'components' => array(
 		...
 		'clientScript' => array(
-			'class' => 'ext.yii-cs-objectliteral.YiiCSObjectLiteral',
+			'class' => 'ext.yii-csol.YiiCSOL',
 			'coreScriptPosition' => CClientScript::POS_END, // At will. Required Yii >= 1.1.11
 			'defaultScriptFilePosition' => CClientScript::POS_END // At will. Required Yii >= 1.1.11
 		),
@@ -26,7 +26,7 @@ Add to protected/config/main.php
 
 API
 ----------------
-### YiiCSObjectLiteral::registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY, $data = array())
+### YiiCSOL::registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY, $data = array())
 
 
 ~~~php
@@ -34,7 +34,7 @@ API
 Yii::app()->clientScript->registerScriptInit();
 ~~~
 
-### YiiCSObjectLiteral::registerScriptData($name, $data)
+### YiiCSOL::registerScriptData($name, $data)
 
 
 ~~~php
@@ -42,7 +42,7 @@ Yii::app()->clientScript->registerScriptInit();
 Yii::app()->clientScript->registerScriptData();
 ~~~
 
-### YiiCSObjectLiteral::registerCssFile($url, $media='')
+### YiiCSOL::registerCssFile($url, $media='')
 
 
 ~~~php
@@ -50,7 +50,7 @@ Yii::app()->clientScript->registerScriptData();
 Yii::app()->clientScript->registerCssFile();
 ~~~
 
-### YiiCSObjectLiteral::registerScriptFile($url, $position = null, $isRevision = true)
+### YiiCSOL::registerScriptFile($url, $position = null, $isRevision = true)
 
 
 ~~~php
@@ -58,7 +58,7 @@ Yii::app()->clientScript->registerCssFile();
 Yii::app()->clientScript->registerScriptFile();
 ~~~
 
-### YiiCSObjectLiteral::getRevision()
+### YiiCSOL::getRevision()
 
 
 ~~~php
