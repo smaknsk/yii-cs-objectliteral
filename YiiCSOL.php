@@ -93,13 +93,13 @@ class YiiCSOL extends CClientScript
 	 * @param type $isRevision
 	 * @return CClientScript
 	 */
-	public function registerScriptFile($url, $position = null, $isRevision = true)
+	public function registerScriptFile($url, $position = null, array $htmlOptions=array(), $isRevision = true)
 	{
 		if ($isRevision) {
 			$url = $url . $this->getRevision();
 		}
 				
-		return parent::registerScriptFile($url, $position);
+		return parent::registerScriptFile($url, $position, $htmlOptions);
 	}
 	
 	/**
