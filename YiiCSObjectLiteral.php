@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Implement Object Literal pattern for Yii
- * https://github.com/smaknsk/yii-cs-objectliteral
+ * Using Object Literal to organize your code for Yii
+ * http://github.com/smaknsk/yii-csol
  */
-class YiiCSObjectLiteral extends CClientScript 
+class YiiCSOL extends CClientScript 
 {
 	/**
-	 * @var string Номер ревизии
+	 * @var string Number revisioin add to url (script.js?v=$revision)
 	 */
-	private $revision = null;
+	protected $revision = null;
 	
 	/**
-	 * Регистрирует инициализацию контролера
+	 * Add js code for run Controller
 	 * 
 	 * @param string || array $module
 	 * @param string $controller
@@ -25,7 +25,7 @@ class YiiCSObjectLiteral extends CClientScript
 	 * <li>CClientScript::POS_LOAD : the script is inserted in the window.onload() function.</li>
 	 * <li>CClientScript::POS_READY : the script is inserted in the jQuery's ready function.</li>
 	 * </ul>
-     * @param array $data
+	 * @param array $data
 	 * @return CClientScript the CClientScript object itself (to support method chaining, available since version 1.1.5).
 	 */
 	public function registerScriptInit($module = null, $controller = null, $action = null, $position=self::POS_READY, $data = array())
@@ -54,7 +54,7 @@ class YiiCSObjectLiteral extends CClientScript
 	}
 	
 	/**
-	 * Отдаёт номер ревизии из файла application.runtime/clientscript.rev
+	 * Get revision number from file application.runtime/clientscript.rev
 	 * @return string
 	 */
 	public function getRevision() 
@@ -73,7 +73,7 @@ class YiiCSObjectLiteral extends CClientScript
 	}
 	
 	/**
-	 * Добавляет в URL номер ревизии
+	 * Register CSS file and add revision to url
 	 * 
 	 * @param string $url
 	 * @param type $media
@@ -86,7 +86,7 @@ class YiiCSObjectLiteral extends CClientScript
 	}
 	
 	/**
-	 * Добавляет в URL номер ревизии
+	 * Register JS file  and add revision to url
 	 * 
 	 * @param string $url
 	 * @param type $position
@@ -103,7 +103,7 @@ class YiiCSObjectLiteral extends CClientScript
 	}
 	
 	/**
-	 * Скрипт для передачи параметров в JS
+	 * Convert array to json and register as script
 	 * 
 	 * @param type $name
 	 * @param type $data
