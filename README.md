@@ -1,7 +1,9 @@
-Yii ClientScript Object Literal
+Yii ClientScript ObjectLiteral
 ================
 
-The implementation of the basic methods ObjectLiteral for framework Yii CClientScript
+Using objects for organize your client script code.
+The implementation of the basic methods Object Literal for framework Yii CClientScript.
+
 Read more about this: 
 * [Markup-based unobtrusive comprehensive DOM-ready execution](http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/)
 * [Show love to the object literal](http://christianheilmann.com/2006/02/16/show-love-to-the-object-literal/)
