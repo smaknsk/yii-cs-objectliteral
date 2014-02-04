@@ -13,7 +13,7 @@ Installation
 ----------------
 Copy this component to extensions/yii-csol or add as submodule:
 ~~~bash
-git submodule add git://github.com/smaknsk/yii-csol.git extensions/yii-csobl
+git submodule add git://github.com/smaknsk/yii-csol.git extensions/yii-csol
 ~~~
 
 Add to protected/config/main.php
