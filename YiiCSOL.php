@@ -7,6 +7,12 @@
 class YiiCSOL extends CClientScript
 {
     /**
+     * @var string Base url path script files
+     */
+    public $baseUrl = '/js/';
+
+
+    /**
      * @var string Number revisioin add to url (script.js?v=$revision)
      */
     protected $revision = null;
@@ -28,29 +34,48 @@ class YiiCSOL extends CClientScript
      * @param array $data
      * @return CClientScript the CClientScript object itself (to support method chaining, available since version 1.1.5).
      */
-    public function registerScriptInit($module = null, $controller = null, $action = null, $position = self::POS_READY, $data = array())
+    public function registerScriptInit($module = null, $controller = null, $action = null, $position = self::POS_LOAD, $data = array())
     {
         if (is_array($module)) {
             $data = $module;
             $module = null;
         }
 
+        $scriptId = array($module, $controller, $action, 'init');
+        $paramsJson = $data ? json_encode($data, JSON_FORCE_OBJECT) : '';
+
         if (!$module && Yii::app()->getController()->module) {
-            $module = ucfirst(Yii::app()->getController()->module->id) . 'Module.';
+            $scriptId[0] = ucfirst(Yii::app()->getController()->module->id) . 'Module';
         }
 
         if (!$controller) {
-            $controller = ucfirst(Yii::app()->getController()->id) . 'Controller';
+            $scriptId[1] = ucfirst(Yii::app()->getController()->id) . 'Controller';
         }
 
         if (!$action) {
-            $action = 'action' . ucfirst(Yii::app()->getController()->action->id);
+            $scriptId[2] = 'action' . ucfirst(Yii::app()->getController()->action->id);
         }
 
-        $scriptId = $module . $controller . '.' . $action . '.init';
-        $paramsJson = $data ? json_encode($data, JSON_FORCE_OBJECT) : '';
+        if (!$scriptId[0]) {
+            array_shift($scriptId);
+        }
+        $scriptIdStr = implode('.', $scriptId);
 
-        $this->registerScript($scriptId, $scriptId . '(' . $paramsJson . ');', $position);
+        $scriptChecking = array();
+        $tmp = '';
+        foreach($scriptId as $item) {
+            $tmp .= $item;
+            $scriptChecking[] = 'typeof(' . $tmp . ') != "undefined"';
+            $tmp .= '.';
+        }
+        $scriptChecking = implode(' && ', $scriptChecking);
+        $scriptChecking  = 'if (' . $scriptChecking . '){' . $scriptIdStr . '(' . $paramsJson . ');' . '}';
+
+        $scriptFile = $this->baseUrl . $scriptId[0] . '.js';
+        if (file_exists(Yii::getPathOfAlias('webroot') . $scriptFile)) {
+            $this->registerScriptFile($scriptFile);
+            $this->registerScript($scriptIdStr, $scriptChecking, $position);
+        }
     }
 
     /**
@@ -106,12 +131,27 @@ class YiiCSOL extends CClientScript
     /**
      * Convert array to json and register as script
      *
-     * @param type $name
-     * @param type $data
+     * @param $name
+     * @param $data
+     * @param integer $position
+     * <ul>
+     * <li>CClientScript::POS_HEAD : the script is inserted in the head section right before the title element.</li>
+     * <li>CClientScript::POS_BEGIN : the script is inserted at the beginning of the body section.</li>
+     * <li>CClientScript::POS_END : the script is inserted at the end of the body section.</li>
+     * <li>CClientScript::POS_LOAD : the script is inserted in the window.onload() function.</li>
+     * <li>CClientScript::POS_READY : the script is inserted in the jQuery's ready function.</li>
+     * </ul>
+     * @param array $htmlOptions
      * @return CClientScript
      */
-    public function registerScriptData($name, $data)
+    public function registerScriptData($name, $data, $position = null, array $htmlOptions = array())
     {
-        return $this->registerScript($name, $name . ' = ' . json_encode($data) . ';');
+        return $this->registerScript($name, $name . ' = ' . json_encode($data) . ';', $position, $htmlOptions);
+    }
+
+    public function render(&$output)
+    {
+        $this->registerScriptInit();
+        parent::render($output);
     }
 }
