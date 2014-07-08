@@ -1,0 +1,12 @@
+{
+	"name": "pendalff/yii-csol",
+	"description": "Implement Object Literal methods for client script Yii ",
+	"keywords": ["yii","clientscript"],
+	"type": "yii-extension",
+	"license": "GPL",
+	"authors": [
+	{
+		"name": "Alexander Sobolevskiy",
+	}
+]
+}
