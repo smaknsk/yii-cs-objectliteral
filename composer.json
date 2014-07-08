@@ -5,8 +5,8 @@
 	"type": "yii-extension",
 	"license": "GPL",
 	"authors": [
-	{
-		"name": "Alexander Sobolevskiy",
-	}
-]
+		{
+			"name": "Alexander Sobolevskiy"
+		}
+	]
 }
