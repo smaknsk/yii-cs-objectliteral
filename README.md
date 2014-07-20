@@ -22,6 +22,7 @@ Add to protected/config/main.php
 		...
 		'clientScript' => array(
 			'class' => 'ext.yii-csol.YiiCSOL',
+			'revisionFile' => 'clienscript.rev',
 			'coreScriptPosition' => CClientScript::POS_END, // At will. Required Yii >= 1.1.11
 			'defaultScriptFilePosition' => CClientScript::POS_END // At will. Required Yii >= 1.1.11
 		),
