@@ -11,6 +11,7 @@ class YiiCSOL extends CClientScript
      */
     public $baseUrl = '/js/';
 
+    public $revisionFile = 'clientscript.rev';
 
     /**
      * @var string Number revisioin add to url (script.js?v=$revision)
@@ -89,7 +90,7 @@ class YiiCSOL extends CClientScript
         }
 
         $this->revision = '';
-        $path = Yii::getPathOfAlias('application.runtime') . '/clientscript.rev';
+        $path = Yii::getPathOfAlias('application.runtime') . '/' . $this->revisionFile;
         if (file_exists($path)) {
             $this->revision = '?' . trim(file_get_contents($path));
         }
