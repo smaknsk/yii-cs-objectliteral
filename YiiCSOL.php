@@ -22,6 +22,13 @@ class YiiCSOL extends CClientScript
     public $revision = null;
 
     /**
+     * @var int default position for YiiCSOL::registerScriptInit
+     * This can be one of the CClientScript::POS_* constants.
+     * Defaults to CClientScript::POS_READY.
+     */
+    public $defaultScriptInitPosition = self::POS_READY;
+
+    /**
      * Add js code for run Controller
      *
      * @param string || array $module
@@ -40,6 +47,10 @@ class YiiCSOL extends CClientScript
      */
     public function registerScriptInit($module = null, $controller = null, $action = null, $position = null, $data = array())
     {
+        if($position === null) {
+            $position = $this->defaultScriptInitPosition;
+        }
+
         if (is_array($module)) {
             $data = $module;
             $module = null;
