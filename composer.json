@@ -1,5 +1,5 @@
 {
-	"name": "pendalff/yii-csol",
+	"name": "smak/yii-csol",
 	"description": "Implement Object Literal methods for client script Yii ",
 	"keywords": ["yii","clientscript"],
 	"type": "yii-extension",

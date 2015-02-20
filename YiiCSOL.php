@@ -2,7 +2,7 @@
 
 /**
  * Using Object Literal to organize your code for Yii
- * http://github.com/smaknsk/yii-csol
+ * https://github.com/smaknsk/yii-csol
  */
 class YiiCSOL extends CClientScript
 {
@@ -11,18 +11,15 @@ class YiiCSOL extends CClientScript
      */
     public $baseUrl = '/js/';
 
-    public $revisionFile = 'clientscript.rev';
-
     /**
-     * @var int default position for YiiCSOL::registerScriptInit
-     * value is CClientScript::POS_END,CClientScript::POS_READY and etc
+     * @var string File stores the revision number
      */
-    public $defaultPosition = 4;
+    public $revisionFile = 'clientscript.rev';
 
     /**
      * @var string Number revisioin add to url (script.js?v=$revision)
      */
-    protected $revision = null;
+    public $revision = null;
 
     /**
      * Add js code for run Controller
@@ -43,10 +40,6 @@ class YiiCSOL extends CClientScript
      */
     public function registerScriptInit($module = null, $controller = null, $action = null, $position = null, $data = array())
     {
-        if(is_null($position)) {
-            $position = $this->defaultPosition;
-        }
-        
         if (is_array($module)) {
             $data = $module;
             $module = null;
@@ -160,6 +153,13 @@ class YiiCSOL extends CClientScript
         return $this->registerScript($name, $name . ' = ' . json_encode($data) . ';', $position, $htmlOptions);
     }
 
+    /**
+     * Renders the registered scripts.
+     * This method is called in {@link CController::render} when it finishes
+     * rendering content. CClientScript thus gets a chance to insert script tags
+     * at <code>head</code> and <code>body</code> sections in the HTML output.
+     * @param string $output the existing output that needs to be inserted with script tags
+     */
     public function render(&$output)
     {
         $this->registerScriptInit();
