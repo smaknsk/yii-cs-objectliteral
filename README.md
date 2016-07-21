@@ -11,9 +11,9 @@ Read more about this:
 
 Installation
 ----------------
-Copy this component to extensions/yii-csol or add as submodule:
+Composer
 ~~~bash
-git submodule add git://github.com/smaknsk/yii-csol.git extensions/yii-csol
+composer require smak/yii-csol
 ~~~
 
 Add to protected/config/main.php
