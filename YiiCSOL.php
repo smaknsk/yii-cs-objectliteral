@@ -126,7 +126,7 @@ class YiiCSOL extends CClientScript
     }
 
     /**
-     * Register JS file  and add revision to url
+     * Register JS file and add revision to url
      *
      * @param string $url
      * @param string $position
